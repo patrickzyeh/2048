@@ -1,0 +1,137 @@
+#root {
+    max-width: 1280px;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box; /* Ensure consistent box model behavior */
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #faf8ef;
+    font-family: "Clear Sans", sans-serif;
+}
+
+h1 {
+    color: #776e65;
+    font-size: 5rem;
+}
+
+#game-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#header {
+    text-align: center;
+    margin: 100px 0px 50px 0px;
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#scorebox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #bbada0;
+    border-radius: 5px;
+    width: 200px;
+    height: 100px;
+}
+
+#scorebox #score {
+    color: white;
+    font-size: 25px;
+}
+
+#scorebox p {
+    color: #eee4da;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#game-description {
+    color: #776e65;
+    font-size: 18px;
+}
+
+#game-grid {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 20px;
+    width: 650px;
+    height: 650px;
+    background-color: #bbada0;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.tile {
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tile-null {
+    background-color: #eee4da59;
+}
+
+.tile-2 {
+    color: #776e65;
+    background-color: #eee4da;
+}
+
+.tile-4 {
+    color: #776e65;
+    background-color: #ede0c8;
+}
+
+.tile-8 {
+    background-color: #f2b179;
+}
+
+.tile-16 {
+    background-color: #f59563;
+}
+
+.tile-32 {
+    background-color: #f67c5f;
+}
+
+.tile-64 {
+    background-color: #f65e3b;
+}
+
+.tile-128 {
+    background-color: #edcf72;
+}
+
+.tile-256 {
+    background-color: #edcc61;
+}
+
+.tile-512 {
+    background-color: #edc850;
+}
+
+.tile-1024 {
+    background-color: #edc53f;
+}
+
+.tile-2048 {
+    background-color: #edc22e;
+}
