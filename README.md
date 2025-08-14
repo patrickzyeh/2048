@@ -1,2 +1,2 @@
 # 2048
-recreated 2048 to get back into webdev
+recreated 2048 to relearn react
