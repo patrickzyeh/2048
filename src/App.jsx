@@ -33,19 +33,93 @@ function App() {
 
                 const newGrid = [...prevGrid.map((innerArray) => [...innerArray])];
                 newGrid[row][col] = newTileValue;
-                setGrid(newGrid);
                 return newGrid;
             }
             return prevGrid;
         });
     }
 
-    function handleKeyPress() {}
+    function leftSlide(grid) {
+        // reducing row
+        const reducedGrid = [];
+        grid.forEach((row) => {
+            const reducedRow = row.filter((tile) => tile !== null);
+            reducedGrid.push(reducedRow);
+        });
+
+        // merging row
+
+        // padding row
+        reducedGrid.forEach((row) => {
+            const pad = 4 - row.length;
+            for (let _ = 0; _ < pad; _++) {
+                row.push(null);
+            }
+        });
+        return reducedGrid;
+    }
+
+    function rightSlide(grid) {
+        // reducing row
+        const reducedGrid = [];
+        grid.forEach((row) => {
+            const reducedRow = row.filter((tile) => tile !== null);
+            reducedGrid.push(reducedRow);
+        });
+
+        // merging row
+
+        // padding row (need to append from the front)
+        reducedGrid.forEach((row) => {
+            const pad = 4 - row.length;
+            for (let _ = 0; _ < pad; _++) {
+                row.unshift(null);
+            }
+        });
+        return reducedGrid;
+    }
+
+    function transpose(grid) {
+        return grid[0].map((_, colIndex) => grid.map((row) => row[colIndex]));
+    }
+
+    function handleKeyPress(e) {
+        const key = e.key;
+        switch (key) {
+            case "a":
+                setGrid((oldGrid) => {
+                    return leftSlide(oldGrid);
+                });
+                break;
+            case "d":
+                setGrid((oldGrid) => {
+                    return rightSlide(oldGrid);
+                });
+                break;
+            case "w":
+                setGrid((oldGrid) => {
+                    return transpose(leftSlide(transpose(oldGrid)));
+                });
+                break;
+            case "s":
+                setGrid((oldGrid) => {
+                    return transpose(rightSlide(transpose(oldGrid)));
+                });
+                break;
+        }
+    }
 
     useEffect(() => {
         addRandomTile();
         addRandomTile();
     }, []);
+
+    useEffect(() => {
+        document.addEventListener("keydown", handleKeyPress);
+        return () => {
+            document.removeEventListener("keydown", handleKeyPress);
+        };
+    }, [grid]);
 
     return (
         <div id="game-container">
